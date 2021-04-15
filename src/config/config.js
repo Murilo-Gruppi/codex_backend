@@ -4,11 +4,11 @@ const config = () => {
     switch (env) {
         case 'dev':
             return {
-                bd_url: 'mongodb+srv://usuario_admin:BvFBrpVNG36oyEgY@clusterapi.zryx0.mongodb.net/db_dev?retryWrites=true&w=majority'
+                bd_url: URL_DO_BD_DEV
             }
         case 'prod':
             return {
-                bd_url: 'mongodb+srv://usuario_admin:BvFBrpVNG36oyEgY@clusterapi.zryx0.mongodb.net/db_prod?retryWrites=true&w=majority'
+                bd_url: URL_DO_BD_PROD
             }
     }
 }
