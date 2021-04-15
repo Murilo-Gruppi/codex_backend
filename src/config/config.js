@@ -6,13 +6,13 @@ const config = () => {
             return {
                 bd_url: URL_DO_BD_DEV,
                 jwt_secret: JWT_SECRET,
-                expiresIn: TEMPO_PARA_EXPIRAR
+                jwt_expires_in: TEMPO_PARA_EXPIRAR
             }
         case 'prod':
             return {
                 bd_url: URL_DO_BD_PROD,
                 jwt_secret: JWT_SECRET,
-                expiresIn: TEMPO_PARA_EXPIRAR
+                jwt_expires_in: TEMPO_PARA_EXPIRAR
             }
     }
 }
