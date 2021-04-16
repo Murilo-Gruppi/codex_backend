@@ -4,14 +4,27 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const config = require('../config/config');
 
+/**
+ * Cria um Token para o usuário
+ * 
+ * @param userId 
+ * @returns o token próprio do usuário 
+ */
 const createUserToken = (userId) => {
     return jwt.sign({ id: userId }, config.jwt_secret, { expiresIn: config.jwt_expires_in });
 }
 
+/**
+ * verifica o método GET da rota de usuários
+ */
 router.get('/', async (req, res) => {
     return res.send({message: 'Tudo ok com o método GET da rota de usuários'})
 });
 
+/**
+ * Método POST para criar um usuário, recebendo um email e uma senha para registrá-lo.
+ * Se tudo estiver correto, retorna o status 201 e envia um objeto com o usuário e seu token
+ */
 router.post('/create', async (req, res) => {
     const { email, password } = req.body;
     if (!email || !password) return res.status(400).send({error: 'Dados insuficientes!'});
@@ -28,6 +41,9 @@ router.post('/create', async (req, res) => {
     }
 });
 
+/**
+ * Rota responsável por fazer o login do usuário, de acordo com seu email e senha.
+ */
 router.post('/auth', async (req, res) => {
     const { email, password } = req.body;
 

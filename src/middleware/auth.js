@@ -1,6 +1,9 @@
 const jwt = require('jsonwebtoken');
 const config = require('../config/config');
 
+/**
+ * Responsavel por fazer a verificação do token do usuário
+ */
 const auth = (req, res) => {
     const token_header = req.headers.auth;
 
