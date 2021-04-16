@@ -12,6 +12,7 @@ const options = {
     poolSize: 5, 
     useNewUrlParser: true 
 };
+
 mongoose.connect(url, options);
 mongoose.set('useCreateIndex', true);
 
