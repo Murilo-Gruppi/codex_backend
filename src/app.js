@@ -2,9 +2,10 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const config = require('./config/config');
+const cors = require('cors');
 const indexRoute = require('./routes/index');
 const usersRoute = require('./routes/users');
-const config = require('./config/config');
 
 const url = config.bd_url;
 const options = { 
@@ -30,6 +31,7 @@ mongoose.connection.on('connected', () => {
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
+app.use(cors());
 app.use('/', indexRoute);
 app.use('/users', usersRoute);
 
