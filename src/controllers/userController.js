@@ -49,11 +49,7 @@ const UserController = {
         } catch (err) {
             return res.status(500).send({error: 'Erro ao buscar usuário'});
         }
-    },
-    
-    getUser(req, res) {
-        return res.send(req.user);
-    }    
+    }   
 }
 
 module.exports = UserController;
