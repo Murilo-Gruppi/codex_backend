@@ -1,13 +1,21 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt');
 
 /**
  * Cria um Schema para os usuários do sistema
  */
-const UserSchema = new Schema({
-    email: { type: String, required: true, unique: true, lowercase: true},
-    password: {type: String, required: true, select: false}
+const UserSchema = new mongoose.Schema({
+    email: { 
+        type: String,
+        required: true, 
+        unique: true, 
+        lowercase: true
+    },
+    password: {
+        type: String,
+        required: true,
+        select: false
+    }
 });
 
 // Um pré save para criptografar a senha e guardar no bd
@@ -19,4 +27,6 @@ UserSchema.pre('save', async function(next) {
     return next();
 });
 
-module.exports = mongoose.model('User', UserSchema);
+const User = mongoose.model('User', UserSchema);
+
+module.exports = User;
